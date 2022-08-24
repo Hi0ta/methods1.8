@@ -3,56 +3,62 @@ import java.time.LocalDate;
 public class Main {
 
     //задача 1
-    public static boolean calculateLeapYear(int year) {
+    private static void printLeapYear(int year) {
         boolean leapYear = (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
-        return leapYear;
+        if (leapYear) {
+            System.out.println("Это високосный год");
+        } else {
+            System.out.println("Это не високосный год");
+        }
     }
 
-    // задача 2.1
-    public static String getYearOfRelease(int clientDeviceYear) {
+    // задача 2
+    //private static String getYearOfRelease(int clientDeviceYear) {
+    //  int currentYear = LocalDate.now().getYear();
+    // if (clientDeviceYear < currentYear) {
+    //   return "облегченную";
+    // }
+    //return "";
+    //}
+    // private static String getClientOS(int clientOS) {
+    //   if (clientOS == 0) {
+    //     return "iOS";
+    //}
+    //return "Android";
+    //}
+
+    // задача 2
+    private static void printText(int deviceYearClient, int osClient) {
         int currentYear = LocalDate.now().getYear();
-        if (clientDeviceYear < currentYear) {
-            return "облегченную";
+        if (deviceYearClient < currentYear && osClient == 0) {
+            System.out.println("Установите облегченную версию приложения для ios по ссылке");
         }
-        return "";
-    }
+        if (deviceYearClient < currentYear && osClient == 1) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        }
+        if (deviceYearClient == currentYear && osClient == 0) {
+            System.out.println("Установите текущую версию приложения для ios по ссылке");
+        }
+        if (deviceYearClient == currentYear && osClient == 1) {
+            System.out.println("Установите текущую версию приложения для Android по ссылке");
+        }
+        if (deviceYearClient > currentYear || osClient > 1 || osClient < 0) {
+            System.out.println("Введены параметры вне условий задачи");
+        }
 
-    public static String getClientOS(int ClientOS) {
-        if (ClientOS == 0) {
-            return "iOS";
-        }
-        return "Android";
-    }
-
-    // задача 2.2
-    public static String getTextToPrint(int DeviceYearClient, int OsClient) {
-        int currentYear = 2022;
-        if (DeviceYearClient < currentYear && OsClient == 0) {
-            return "Установите облегченную версию приложения для ios по ссылке";
-        }
-        if (DeviceYearClient < currentYear && OsClient == 1) {
-            return "Установите облегченную версию приложения для Android по ссылке";
-        }
-        if (DeviceYearClient == currentYear && OsClient == 0) {
-            return "Установите текущую версию приложения для ios по ссылке";
-        }
-        if (DeviceYearClient == currentYear && OsClient == 1) {
-            return "Установите текущую версию приложения для Android по ссылке";
-        }
-        return "Введены параметры вне условий задачи";
     }
 
     // задача 3
 
-    public static int getNumberOfDeliveryDays(int deliveryDistance) {
+    private static void printNumberOfDeliveryDays(int deliveryDistance) {
         int day = 1;
         int interval = 40;
         int distance = 20;
         if (deliveryDistance <= distance) {
-            return day;
+            System.out.println("Потребуется 1 день");
         } else {
             day = day + (int) Math.ceil((deliveryDistance - distance) / (double) interval);
-            return day;
+            System.out.println("Потребуется дней: " + day);
         }
     }
 
@@ -61,41 +67,31 @@ public class Main {
 
         System.out.println("Задача 1");
         int year = 2022;
-        boolean leapYear = calculateLeapYear(year);
-        if (leapYear) {
-            System.out.println("Это високосный год");
-        }
-        System.out.println("Это не високосный год");
+        printLeapYear(year);
 
+        // System.out.println();
+        //System.out.println("Задача 2");
 
-        System.out.println();
-        System.out.println("Задача 2.1");
+        //int clientOS = 1;
+        //int clientDeviceYear = 2021;
 
-        int ClientOS = 1;
-        int clientDeviceYear = 2021;
-
-        String clientOS = getClientOS(ClientOS);
-        String YearOfoRelease = getYearOfRelease(clientDeviceYear);
-        System.out.println("Установите " + YearOfoRelease + " версию приложения для " + clientOS + " по ссылке");
+        //String os = getClientOS(clientOS);
+        //String yearOfoRelease = getYearOfRelease(clientDeviceYear);
+        //System.out.println("Установите " + yearOfoRelease + " версию приложения для " + os + " по ссылке");
 
         System.out.println();
-        System.out.println("Задача 2.2");
+        System.out.println("Задача 2");
 
-        int DeviceYearClient = 2022;
-        int OsClient = 0;
-
-        String TextToPrint = getTextToPrint(DeviceYearClient, OsClient);
-        System.out.println(TextToPrint);
+        int deviceYearClient = 2020;
+        int osClient = 0;
+        printText(deviceYearClient, osClient);
 
 
         System.out.println();
         System.out.println("Задача 3");
 
-        int deliveryDistance = 141;
-
-        int day =getNumberOfDeliveryDays(deliveryDistance);
-        System.out.println("Потребуется дней: " + day);
-
+        int deliveryDistance = 20;
+        printNumberOfDeliveryDays(deliveryDistance);
 
     }
 }
