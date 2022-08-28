@@ -102,7 +102,6 @@ public class Main {
         }
         return arr;
     }
-
     private static int getMonthlyPaymentAmount() {
         int[] arrCosts = generateRandomArray();
         int monthlyPaymentAmount = 0;
@@ -111,17 +110,15 @@ public class Main {
         }
         return monthlyPaymentAmount;
     }
-
     private static double getAverageSpendingPerMonth() {
         int[] arrCosts = generateRandomArray();
         double averageSpendingPerMonth = 0.0;
-        averageSpendingPerMonth = getMonthlyPaymentAmount() / arrCosts.length;
+        averageSpendingPerMonth = getMonthlyPaymentAmount() / (arrCosts.length * 1.0);
         return averageSpendingPerMonth;
-    }
-
-    private static void printResult(){
+       }
+    private static void printResult() {
         System.out.println("Сумма трат за месяц составила " + getMonthlyPaymentAmount() + " рублей");
-        System.out.println("Средняя сумма трат за день составила " + getAverageSpendingPerMonth() + " рублей");
+        System.out.printf("Средняя сумма трат за день составила %.2f рублей", getAverageSpendingPerMonth());
     }
 
     public static void main(String[] args) {
