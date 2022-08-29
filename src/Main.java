@@ -102,23 +102,23 @@ public class Main {
         }
         return arr;
     }
-    private static int getMonthlyPaymentAmount() {
-        int[] arrCosts = generateRandomArray();
+    private static int getMonthlyPaymentAmount(int[] arrCosts) {
+       // int[] arrCosts = generateRandomArray();
         int monthlyPaymentAmount = 0;
         for (int element : arrCosts) {
             monthlyPaymentAmount += element;
         }
         return monthlyPaymentAmount;
     }
-    private static double getAverageSpendingPerMonth() {
-        int[] arrCosts = generateRandomArray();
+    private static double getAverageSpendingPerMonth(int[] arrCosts) {
+        //int[] arrCosts = generateRandomArray();
         double averageSpendingPerMonth = 0.0;
-        averageSpendingPerMonth = getMonthlyPaymentAmount() / (arrCosts.length * 1.0);
+        averageSpendingPerMonth = getMonthlyPaymentAmount(arrCosts) / (arrCosts.length * 1.0);
         return averageSpendingPerMonth;
        }
-    private static void printResult() {
-        System.out.println("Сумма трат за месяц составила " + getMonthlyPaymentAmount() + " рублей");
-        System.out.printf("Средняя сумма трат за день составила %.2f рублей", getAverageSpendingPerMonth());
+    private static void printResult(int[] arrCosts) {
+        System.out.println("Сумма трат за месяц составила " + getMonthlyPaymentAmount(arrCosts) + " рублей");
+        System.out.printf("Средняя сумма трат в день составила %.2f рублей", getAverageSpendingPerMonth(arrCosts));
     }
 
     public static void main(String[] args) {
@@ -157,7 +157,8 @@ public class Main {
 
         System.out.println();
         System.out.println("Задача 6");
-        printResult();
+        int[] arrCosts = generateRandomArray();
+        printResult(arrCosts);
 
     }
 }
